@@ -19,4 +19,4 @@ before_install:
 script: docker-compose run --rm --service-ports web odoo -d staging -i test_module --stop-after-init --xmlrpc-port=8070
 
 # Run unit tests :D
-after_script: script: docker-compose run --rm --service-ports web odoo -d staging -i test_module --test-enable --stop-after-init --xmlrpc-port=8070
+after_script: docker-compose run --rm --service-ports web odoo -d staging -i test_module --test-enable --stop-after-init --xmlrpc-port=8070
