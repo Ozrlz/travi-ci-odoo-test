@@ -14,8 +14,9 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  
-script: docker-compose run --rm --service-ports web odoo -d staging -i test_module --test-enable --stop-after-init --xmlrpc-port=8070
 
+# Probe it can be installed
+script: docker-compose run --rm --service-ports web odoo -d staging -i test_module --stop-after-init --xmlrpc-port=8070
 
-after_script: docker-compose down -v
+# Run unit tests :D
+after_script: script: docker-compose run --rm --service-ports web odoo -d staging -i test_module --test-enable --stop-after-init --xmlrpc-port=8070
